@@ -17,8 +17,8 @@ Follow this format and send a message with it to [**@irongfly**](https://t.me/ir
 ### Rules ..
 
 ```bash
-Requiremnets :-
--: Proper commit messages,commit history and authorship (Low Effort trees and kangers aren't allowed)
+Requirements :-
+-: Proper commit messages,commit history and authorship (Low Effort trees and kangers will be rejected instantly)
 -: Must have built more than one unofficial build
 -: No blind builds i.e You need to own the device you are applying for 
 ```
