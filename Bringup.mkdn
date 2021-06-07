@@ -1,0 +1,101 @@
+# Preparing Octvai-OS for your devices
+
+You can always check out our [**device organization**](https://github.com/Octavi-Devices) for reference.
+
+If your device supports cellular data, then set this in octavi_device.mk:
+
+>>        # Inherit some common Octavi stuff.
+>>        $(call inherit-product, vendor/octavi/config/common_full_phone.mk)
+
+If it doesn't, then set this in octavi_device.mk:
+
+>>        # Inherit some common Octavi stuff.   
+>>        $(call inherit-product, vendor/octavi/config/common.mk)
+
+# Building HAL'S
+
+Before starting to build octavi make sure tou have these on your device.mk
+
+>> (XXX can be msm8996, msmXXX, sdm845 etc)
+>> YOUR_HW_PLATFORM := XXXX
+>> 
+>> # Hardware
+>> PRODUCT_BOARD_PLATFORM := $(YOUR_HW_PLATFORM)
+>> PRODUCT_USES_QCOM_HARDWARE := true
+>> 
+>> # HALS
+>> SRC_AUDIO_HAL_DIR := hardware/qcom-caf/$(YOUR_HW_PLATFORM)/audio
+>> SRC_DISPLAY_HAL_DIR := hardware/qcom-caf/$(YOUR_HW_PLATFORM)/display
+>> SRC_MEDIA_HAL_DIR := hardware/qcom-caf/$(YOUR_HW_PLATFORM)/media
+>> 
+>> # Soong namespaces
+>> PRODUCT_SOONG_NAMESPACES += \
+>> $(LOCAL_PATH) \
+>> hardware/qcom-caf/$(YOUR_HW_PLATFORM)
+
+# Gapps
+
+After lunching your build, you can do this to build GApps with the ROM or add this on your octavi_device.mk:
+
+>>        export WITH_GAPPS=true
+
+
+# FOD
+
+In order to enable the FOD HAL, you have to set this in overlay/frameworks/base/core/res/res/values/config.xml:
+
+>>        <!-- Shows the required view for in-display fingerprint -->
+>>        <bool name="config_needCustomFODView>true</bool>
+
+In order to enable fod animations you can do this after lunching your build or adding it in your octavi_device.mk 
+
+>>        export TARGET_WANTS_FOD_ANIMATIONS=true
+
+In order to enable Screen off FOD support, you have to set this in overlay/packages/apps/Settings/res/values/config.xml:
+
+>>        <!-- Whether device has screen off FOD support -->
+>>        <bool name="config_supportScreenOffFod">true</bool>
+
+In order to set the default fod pressed color for your device, you have to add this in overlay/frameworks/base/core/res/res/values/config.xml:
+
+>>        <!-- Default fod pressed color -->
+>>        <integer name="config_fod_pressed_color">Your value </integer> // Default is 1
+
+
+# Burn-in protection
+
+If your device has an AMOLED screen, it is recommended to set this in overlay/frameworks/base/core/res/res/values/config.xml:
+
+>>       <!-- If true, the display will be shifted around in ambient mode. -->
+>>       <bool name="config_enableBurnInProtection">true</bool>
+
+# User icon in Settings Homepage
+
+If clicking on this specific icon makes settings crash you need to enable multiuser support
+
+>> Follow this commit as reference [**reference**](https://github.com/Octavi-Devices/device-xiaomi-davinci/commit/7e65aa287716329988db45348d602ccbf890e209)
+
+# Blur
+If you want to enable blur you can add this on your octavi_device.mk
+
+>>         TARGET_USES_BLUR := true
+
+# Face unlock
+
+If you want to enable face unlock you need to add this to your octavi_device.mk
+
+>>         TARGET_FACE_UNLOCK_SUPPORTED := true
+
+If your device has a pop up camera and you want camera to open only on Security view  you might also want to set this overlay in overlay/frameworks/base/core/res/res/values/config.xml
+
+>>         <!-- Face unlock -->
+>>         <bool name="config_faceAuthOnlyOnSecurityView">true</bool>
+
+# Official status
+
+To mark your build as official, set this in your octavi_device.mk:
+
+>> OCTAVI_BUILD_TYPE := Official
+>> OCTAVI_DEVICE_MAINTAINER := your_name or something funny
+
+Then navigate to vendor/octavi/octavi.devices add your device codename and make a pull request to [**github**](https://github.com/Octavi-OS/platform_vendor_octavi)

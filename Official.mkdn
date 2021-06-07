@@ -1,0 +1,24 @@
+# Official
+
+>> Hi , interested in a new ui and have a passion for android ?
+>> Ready to go meet new people and learn along the way 
+
+### Come on down ..
+
+Follow this format and send a message with it to [**@irongfly**](https://t.me/irongfly) on Telegram or mail on applications@octavi-os.com
+
+```bash
+-: Device and codename
+-: GIthub ID and all trees related to your device
+-: Selinux: Enforcing
+-: Safetynet status: Pass without Magisk/Pass with Magisk/Fails
+-: Telegram username:
+```
+### Rules ..
+
+```bash
+Requiremnets :-
+-: Proper commit messages,commit history and authorship (Low Effort trees and kangers aren't allowed)
+-: Must have built more than one unofficial build
+-: No blind builds i.e You need to own the device you are applying for 
+```
