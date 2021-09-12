@@ -95,7 +95,12 @@ If your device has a pop up camera and you want camera to open only on Security 
 
 To mark your build as official, set this in your octavi_device.mk:
 
->> OCTAVI_BUILD_TYPE := Official
 >> OCTAVI_DEVICE_MAINTAINER := your_name or something funny
 
 Then navigate to vendor/octavi/octavi.devices add your device codename and make a pull request to [**github**](https://github.com/Octavi-OS/platform_vendor_octavi)
+
+# About device data
+
+To add data of your your device in about phone take a look at following given commit and do the same
+  
+>> Take this [**commit**](https://github.com/Octavi-OS/platform_packages_apps_Settings/commit/f6c4e1f481f29375375536522a465df8e2e17e83) as reference 
